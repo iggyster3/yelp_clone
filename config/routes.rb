@@ -54,9 +54,13 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  get 'restaurants' => 'restaurants#index'
+  # get 'restaurants' => 'restaurants#index'
 
   resources :restaurants
+
+  resources :restaurants do
+    resources :reviews
+  end
 
 
 end
