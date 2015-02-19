@@ -35,3 +35,11 @@ context "user signed in on the homepage" do
     expect(page).not_to have_link('Sign up')
   end
 end
+
+context "Restaurants can be edited/deleted" do
+  it "Users can only edit/delete restaurants which they've created" do
+    visit('/')
+    expect(page).to have_link('Sign in')
+    expect(page).to have_link('Sign up')
+  end
+end

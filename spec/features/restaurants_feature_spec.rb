@@ -36,6 +36,24 @@ feature 'restaurants' do
     end
   end
 
+  context 'creating restaurants' do
+    before do
+      visit('/')
+      click_link('Sign in')
+      fill_in('Email', with: 'richard.ighodaro@hotmail.co.uk')
+      fill_in('Password', with: 'iggyster3')
+    end
+
+    scenario 'A user must be logged in to create restaurants' do
+      visit '/restaurants'
+      click_link 'Add new restaurant'
+      fill_in 'Name', with: 'KFC'
+      click_button 'Create Restaurant'
+      expect(page).to have_content 'KFC'
+      expect(current_path).to eq '/restaurants'
+    end
+  end
+
 
   context 'an invalid restaurant' do
       it 'does not let you submit a name that is too short' do
